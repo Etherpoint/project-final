@@ -36,4 +36,8 @@ public class UserBelong extends TimestampEntry {
     @Code
     @Column(name = "user_type_code", nullable = false)
     private String userTypeCode;
+
+    //todo added field description for entity
+    @Column(name = "description", nullable = false)
+    private String description;
 }

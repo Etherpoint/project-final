@@ -61,7 +61,7 @@ public class MailService {
             message.setFrom(email, "JiraRush");
             String content = getContent(template, params);
             message.setText(content, true);
-            message.setSubject(Util.getTitle(content));  // TODO calculate title for group emailing only once
+            message.setSubject(Util.getTitle(content));
             message.setTo(new InternetAddress(toEmail, toName, "UTF-8"));
             if (!appConfig.isTest()) {
                 javaMailSender.send(mimeMessage);

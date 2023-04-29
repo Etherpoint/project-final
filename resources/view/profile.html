@@ -12,12 +12,12 @@
                 <form action="/ui/user/change-password" method="post">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="text-center">Change password</h5>
+                            <h5 class="text-center" th:text="#{profile.change.password}">Change password</h5>
                         </div>
                         <div class="modal-body">
                             <div class="mb-3 row">
                                 <div>
-                                    <label for="oldPassword">Old password</label>
+                                    <label for="oldPassword" th:text="#{profile.old.password}">Old password</label>
                                 </div>
                                 <div>
                                     <input type="password" maxlength="128" class="form-control" id="oldPassword"
@@ -26,7 +26,7 @@
                             </div>
                             <div class="mb-3 row">
                                 <div>
-                                    <label for="newPassword">New password</label>
+                                    <label for="newPassword" th:text="#{profile.new.password}">New password</label>
                                 </div>
                                 <div>
                                     <input type="password" maxlength="128" class="form-control" id="newPassword"
@@ -35,8 +35,8 @@
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                            <button type="submit" class="btn btn-primary" id="changePassword">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" th:text="#{message.cancel}">Cancel</button>
+                            <button type="submit" class="btn btn-primary" id="changePassword" th:text="#{message.save}">
                                 Save
                             </button>
                         </div>
@@ -45,17 +45,17 @@
             </div>
         </div>
         <div class="card mb-3">
-            <div class="card-header"><h4>User info</h4></div>
+            <div class="card-header"><h4 th:text="#{profile.user.info}">User info</h4></div>
             <div class="card-body">
                 <button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal"
-                        data-bs-target="#changePasswordModal">Change password
+                        data-bs-target="#changePasswordModal" th:text="#{profile.change.password}">Change password
                 </button>
                 <div class="alert alert-danger" role="alert" th:if="${userError != null}" th:text="${userError}"></div>
                 <div class="alert alert-success" role="alert" th:if="${userSuccess != null}" th:text="${userSuccess}"></div>
                 <form action="/ui/user" method="post" id="userForm">
                     <div class="mb-3 row">
                         <div class="col-md-2">
-                            <label for="email" class="col-form-label">Email</label>
+                            <label for="email" class="col-form-label" th:text="#{user.email}">Email</label>
                         </div>
                         <div class="col-md-5 col-10">
                             <input type="email" maxlength="128" class="form-control" id="email" name="email"
@@ -64,7 +64,7 @@
                     </div>
                     <div class="mb-3 row">
                         <div class="col-md-2">
-                            <label for="firstName" class="col-form-label">First name</label>
+                            <label for="firstName" class="col-form-label" th:text="#{user.firstname}">First name</label>
                         </div>
                         <div class="col-md-5 col-10">
                             <input type="text" maxlength="32" class="form-control" id="firstName" name="firstName"
@@ -73,7 +73,7 @@
                     </div>
                     <div class="mb-3 row">
                         <div class="col-md-2">
-                            <label for="lastName" class="col-form-label">Last name</label>
+                            <label for="lastName" class="col-form-label" th:text="#{user.lastname}">Last name</label>
                         </div>
                         <div class="col-md-5 col-10">
                             <input type="text" maxlength="32" class="form-control" id="lastName" name="lastName"
@@ -82,7 +82,7 @@
                     </div>
                     <div class="mb-3 row">
                         <div class="col-md-2">
-                            <label for="displayName" class="col-form-label">Display name</label>
+                            <label for="displayName" class="col-form-label" th:text="#{user.display.name}">Display name</label>
                         </div>
                         <div class="col-md-5 col-10">
                             <input type="text" maxlength="32" class="form-control" id="displayName" name="displayName"
@@ -90,19 +90,19 @@
                         </div>
                     </div>
                     <div class="col-auto">
-                        <button type="submit" id="updateUser" class="btn btn-primary">Save</button>
+                        <button type="submit" id="updateUser" class="btn btn-primary" th:text="#{message.save}">Save</button>
                     </div>
                 </form>
             </div>
         </div>
         <div class="card">
-            <div class="card-header"><h4>Profile</h4></div>
+            <div class="card-header"><h4 th:text="#{message.profile}">Profile</h4></div>
             <div class="card-body">
                 <form id="profileForm" action="/ui/profile" method="post">
                     <div class="alert alert-danger" role="alert" th:if="${profileError != null}" th:text="${profileError}"></div>
                     <div class="alert alert-success" role="alert" th:if="${profileSuccess != null}" th:text="${profileSuccess}"></div>
                     <div class="mb-3 row">
-                        <h5>Mail notifications (use ctrl for multiple choice)</h5>
+                        <h5 th:text="#{profile.mail.notifications.text}">Mail notifications (use ctrl for multiple choice)</h5>
                         <div class="col-md-5 col-10">
                             <select class="form-select" name="mailNotifications" multiple id="mailNotifications" size="6">
                                 <option th:each="notification : ${mailNotificationRefs}"
@@ -113,13 +113,13 @@
                         </div>
                     </div>
                     <div class="my-3 row">
-                        <h5>Contacts</h5>
+                        <h5 th:text="#{footer.contacts}">Contacts</h5>
                         <div class="col-md-7 col-10">
                             <table id="contactTable" style="text-align: left;" class="table table-striped">
                                 <thead>
                                 <tr>
-                                    <th>Type</th>
-                                    <th>Contact</th>
+                                    <th th:text="#{profile.type}">Type</th>
+                                    <th th:text="#{profile.contact}">Contact</th>
                                     <th></th>
                                 </tr>
                                 </thead>
@@ -137,7 +137,7 @@
                             </table>
                             <div class="dropdown">
                                 <button class="btn btn-secondary dropdown-toggle" type="button"
-                                        data-bs-toggle="dropdown" aria-expanded="false">
+                                        data-bs-toggle="dropdown" aria-expanded="false" th:text="#{profile.add.contact}">
                                     Add contact
                                 </button>
                                 <ul class="dropdown-menu" aria-labelledby="addContact">
@@ -154,7 +154,7 @@
                         </div>
                     </div>
                     <div class="col-auto align-items-end">
-                        <button type="submit" id="updateProfile" class="btn btn-primary">Save</button>
+                        <button type="submit" id="updateProfile" class="btn btn-primary" th:text="#{message.save}">Save</button>
                     </div>
                 </form>
             </div>

@@ -12,7 +12,7 @@
                             <div class="form-outline mb-4">
                                 <input type="text" th:field="*{firstName}"
                                        th:class="${#fields.hasErrors('firstName')} ? 'form-control is-invalid' : 'form-control'"
-                                       required placeholder="First name"/>
+                                       required th:placeholder="#{user.firstname}"/>
                                 <span class="help-block" th:if="${#fields.hasErrors('firstName')}">
 									<ul>
 										<li class="text-danger text-start"
@@ -23,7 +23,7 @@
                             <div class="form-outline mb-4">
                                 <input type="text" th:field="*{lastName}"
                                        th:class="${#fields.hasErrors('lastName')} ? 'form-control is-invalid' : 'form-control'"
-                                       placeholder="Last name"/>
+                                       th:placeholder="#{user.lastname}"/>
                                 <span class="help-block" th:if="${#fields.hasErrors('lastName')}">
 									<ul>
 										<li class="text-danger text-start" th:each="err : ${#fields.errors('lastName')}"
@@ -34,7 +34,7 @@
                             <div class="form-outline mb-4">
                                 <input type="text" th:field="*{email}"
                                        th:class="${#fields.hasErrors('email')} ? 'form-control is-invalid' : 'form-control'"
-                                       required placeholder="E-mail"/>
+                                       required th:placeholder="#{message.e-mail}"/>
                                 <span class="help-block" th:if="${#fields.hasErrors('email')}">
 									<ul>
 										<li class="text-danger text-start" th:each="err : ${#fields.errors('email')}"
@@ -45,7 +45,7 @@
                             <div class="form-outline mb-4">
                                 <input type="password" th:field="*{password}"
                                        th:class="${#fields.hasErrors('password')} ? 'form-control is-invalid' : 'form-control'"
-                                       required placeholder="Password"/>
+                                       required th:placeholder="#{message.password}"/>
                                 <span class="help-block" th:if="${#fields.hasErrors('password')}">
 									<ul>
 										<li class="text-danger text-start" th:each="err : ${#fields.errors('password')}"
@@ -55,7 +55,7 @@
                             </div>
                             <div class="row">
                                 <div class="d-grid gap-2">
-                                    <button class="btn btn-success btn-lg" type="submit">Create account</button>
+                                    <button class="btn btn-success btn-lg" type="submit" th:text="#{register.create.account}">Create account</button>
                                 </div>
                             </div>
                         </form>
@@ -63,27 +63,19 @@
                             <div class="col-5">
                                 <hr>
                             </div>
-                            <div class="col-2">
+                            <div class="col-2" th:text="#{forgot.password.or}">
                                 OR
                             </div>
                             <div class="col-5">
                                 <hr>
                             </div>
                         </div>
-                        <p class="mt-3 mb-4">
+                        <p class="mt-3 mb-4" th:text="#{register.fast.registration}">
                             Fast registration through social networks
                         </p>
                         <a href="/oauth2/authorization/google" type="button"
                            class="btn btn-secondary btn-lg me-2">
                             <i class="fa-brands fa-google"></i>
-                        </a>
-                        <a href="/oauth2/authorization/vk" type="button" class="btn btn-primary btn-lg me-2"
-                           style="padding-left: 17px; padding-right: 17px;">
-                            <i class="fa-brands fa-vk"></i>
-                        </a>
-                        <a href="/oauth2/authorization/yandex" type="button" class="btn btn-danger btn-lg me-2"
-                           style="padding-left: 21px; padding-right: 21px;">
-                            <i class="fa-brands fa-yandex"></i>
                         </a>
                         <a href="/oauth2/authorization/github" type="button" class="btn btn-dark btn-lg me-2">
                             <i class="fa-brands fa-github"></i>
@@ -91,8 +83,8 @@
                         <a href="/oauth2/authorization/gitlab" type="button" class="btn btn-warning btn-lg">
                             <i class="fa-brands fa-gitlab"></i>
                         </a>
-                        <p class="mt-3 mb-2 mb-md-0" style="font-size:0.8em">
-                            Already have an account? <a href="/view/login">Sign in</a>
+                        <p class="mt-3 mb-2 mb-md-0" style="font-size:0.8em" th:text="#{register.already.have.account}">
+                            Already have an account? <a href="/view/login" th:text="#{message.sign_in}">Sign in</a>
                         </p>
                     </div>
                 </div>

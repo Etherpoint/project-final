@@ -1,4 +1,4 @@
-<html lang="ru">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -28,7 +28,7 @@
                     <div class="collapse navbar-collapse mt-2 mb-2">
                         <ul class="navbar-nav m-auto">
                             <form class="d-flex" role="search">
-                                <input class="form-control" type="search" placeholder="Search" aria-label="Search" id="header-search">
+                                <input class="form-control" type="search" th:placeholder="#{header.search}" aria-label="Search" id="header-search">
                             </form>
                             <li class="nav-item menu-item me-3 ms-4">
                                 <a href="/doc" type="button" class="btn btn-yellow" target="_blank">Swagger API</a>
@@ -36,7 +36,7 @@
                         </ul>
 
                         <div>
-                            <a href="/ui/profile" type="button" class="btn btn-orange"><i class="fa-solid fa-address-card"></i> Profile</a>
+                            <a href="/ui/profile" type="button" class="btn btn-orange"><i class="fa-solid fa-address-card" th:text="#{message.profile}"></i> Profile</a>
                         </div>
                     </div>
                 </div>
@@ -60,19 +60,19 @@
 
 
                     <li class="nav-item menu-item mt-3 mt-lg-0 mb-0 mb-lg-3" id="test1">
-                        <a class="nav-link sidebar-nav-link" href="#test1"><span class="ms-4"><i class="fa-regular fa-folder-open fa-fw me-2"></i>Link_1</span></a>
+                        <a class="nav-link sidebar-nav-link" href="#test1"><span class="ms-4"><i class="fa-regular fa-folder-open fa-fw me-2" th:text="#{sidebar.link1}"></i>Link_1</span></a>
                     </li>
                     <li class="nav-item menu-item mb-0 mb-lg-3" id="test2">
-                        <a class="nav-link sidebar-nav-link" href="#test2"><span class="ms-4"><i class="fa-solid fa-list-check fa-fw me-2"></i>Link_2</span></a>
+                        <a class="nav-link sidebar-nav-link" href="#test2"><span class="ms-4"><i class="fa-solid fa-list-check fa-fw me-2" th:text="#{sidebar.link2}"></i>Link_2</span></a>
                     </li>
                     <li class="nav-item menu-item mb-0 mb-lg-3" id="test3">
-                        <a class="nav-link sidebar-nav-link" href="#test3"><span class="ms-4"><i class="fa-solid fa-bug fa-fw me-2"></i>Link_3</span></a>
+                        <a class="nav-link sidebar-nav-link" href="#test3"><span class="ms-4"><i class="fa-solid fa-bug fa-fw me-2" th:text="#{sidebar.link3}"></i>Link_3</span></a>
                     </li>
                     <li class="nav-item menu-item mb-0 mb-lg-3" id="test4">
-                        <a class="nav-link sidebar-nav-link" href="#test4"><span class="ms-4"><i class="fa-solid fa-book-skull fa-fw me-2"></i>Link_4</span></a>
+                        <a class="nav-link sidebar-nav-link" href="#test4"><span class="ms-4"><i class="fa-solid fa-book-skull fa-fw me-2" th:text="#{sidebar.link4}"></i>Link_4</span></a>
                     </li>
                     <li class="nav-item menu-item" id="test5">
-                        <a class="nav-link sidebar-nav-link" href="#test5"><span class="ms-4"><i class="fa-solid fa-comments fa-fw me-2"></i>Link_5</span></a>
+                        <a class="nav-link sidebar-nav-link" href="#test5"><span class="ms-4"><i class="fa-solid fa-comments fa-fw me-2" th:text="#{sidebar.link5}"></i>Link_5</span></a>
                     </li>
                 </ul>
             </div>
@@ -84,8 +84,8 @@
             <appMain>
                 <div class="text-center">
                     <br>
-                    <h3 class="my-5">404 NOT_FOUND</h3>
-                    <h1 class="my-3">No page here</h1>
+                    <h3 class="my-5" th:text="#{error.error}">404 NOT_FOUND</h3>
+                    <h1 class="my-3" th:text="#{error.no.page}">No page here</h1>
                 </div>
             </appMain>
         </div>
@@ -97,73 +97,73 @@
                 <div class="container text-center text-md-start">
                     <div class="row ms-0 ms-md-5">
                         <div class="col-md-4 col-xl-2 mb-4 mt-4">
-                            <h6 class="fw-bold mt-2 mt-md-0 mb-4">
+                            <h6 class="fw-bold mt-2 mt-md-0 mb-4" th:text="#{error.learn}">
                                 LEARN
                             </h6>
                             <p>
-                                <a href="#" class="footer-href">Programming Courses</a>
+                                <a href="#" class="footer-href" th:text="#{footer.cources}">Programming Courses</a>
                             </p>
                             <p>
-                                <a href="#" class="footer-href">Java Course</a>
+                                <a href="#" class="footer-href" th:text="#{footer.java}">Java Course</a>
                             </p>
                             <p>
-                                <a href="#" class="footer-href">Help with Tasks</a>
+                                <a href="#" class="footer-href" th:text="#{footer.help}">Help with Tasks</a>
                             </p>
                             <p>
-                                <a href="#" class="footer-href">Pricing</a>
+                                <a href="#" class="footer-href" th:text="#{footer.pricing}">Pricing</a>
                             </p>
                             <p>
-                                <a href="#" class="footer-href">Game Projects</a>
+                                <a href="#" class="footer-href" th:text="#{footer.game.projects}">Game Projects</a>
                             </p>
                         </div>
                         <div class="col-md-4 col-xl-2 mb-4 mt-0 mt-md-4">
-                            <h6 class="fw-bold mb-4">
+                            <h6 class="fw-bold mb-4" th:text="#{footer.community}">
                                 COMMUNITY
                             </h6>
                             <p>
-                                <a href="#" class="footer-href">Users</a>
+                                <a href="#" class="footer-href" th:text="#{message.users}">Users</a>
                             </p>
                             <p>
-                                <a href="#" class="footer-href">Articles</a>
+                                <a href="#" class="footer-href" th:text="#{footer.articles}">Articles</a>
                             </p>
                             <p>
-                                <a href="#" class="footer-href">Forum</a>
+                                <a href="#" class="footer-href" th:text="#{footer.forum}">Forum</a>
                             </p>
                             <p>
-                                <a href="#" class="footer-href">Chat</a>
+                                <a href="#" class="footer-href" th:text="#{footer.chat}">Chat</a>
                             </p>
                             <p>
-                                <a href="#" class="footer-href">Success Stories</a>
+                                <a href="#" class="footer-href" th:text="#{footer.success.stories}">Success Stories</a>
                             </p>
                         </div>
                         <div class="col-md-4 col-xl-2 mb-4 mt-0 mt-md-4">
-                            <h6 class="fw-bold mb-4">COMPANY</h6>
+                            <h6 class="fw-bold mb-4" th:text="#{footer.company}">COMPANY</h6>
                             <p>
-                                <a href="#" class="footer-href">About us</a>
-                            <p>
-                            <p>
-                                <a href="#" class="footer-href">Contacts</a>
+                                <a href="#" class="footer-href" th:text="#{footer.about_us}">About us</a>
                             <p>
                             <p>
-                                <a href="#" class="footer-href">Reviews</a>
+                                <a href="#" class="footer-href" th:text="#{footer.contacts}">Contacts</a>
                             <p>
                             <p>
-                                <a href="#" class="footer-href">FAQ</a>
+                                <a href="#" class="footer-href" th:text="#{footer.reviews}">Reviews</a>
                             <p>
                             <p>
-                                <a href="#" class="footer-href">Support</a>
+                                <a href="#" class="footer-href" th:text="#{footer.faq}">FAQ</a>
+                            <p>
+                            <p>
+                                <a href="#" class="footer-href" th:text="#{footer.support}">Support</a>
                             <p>
                         </div>
 
                         <div class="col-xl-5 mb-4 mt-0 mt-md-4">
                             <img src="/static/images/logo/jr.svg" alt="JavaRush" class="mb-3">
-                            <p>
+                            <p th:text="#{footer.java.text}">
                                 JavaRush is an online course for learning Java programming from scratch.
                                 This course is a perfect way to master Java for beginners.
                                 It contains 1200+ of tasks with instant verification and an essential scope of Java
                                 fundamentals theory.
                             </p>
-                            <h6>FOLLOW US</h6>
+                            <h6 th:text="#{footer.follow}">FOLLOW US</h6>
                             <div>
                                 <a href="#" type="button" class="btn btn-sm btn-outline-light me-2">
                                     <i class="fab fa-facebook-f pe-1"></i>
@@ -188,7 +188,7 @@
                     </div>
                 </div>
             </section>
-            <div class="text-center pb-4">
+            <div class="text-center pb-4" th:text="#{footer.text2}">
                 Programmers Are Made, Not Born © 2023 JavaRush
             </div>
         </footer>

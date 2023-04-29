@@ -1,11 +1,16 @@
 package com.javarush.jira.login.internal.web;
 
 import com.javarush.jira.AbstractControllerTest;
+import com.javarush.jira.common.config.PGContainer;
 import com.javarush.jira.login.UserTo;
 import com.javarush.jira.login.internal.verification.ConfirmData;
+import org.junit.ClassRule;
 import org.junit.jupiter.api.Test;
 import org.springframework.security.test.context.support.WithUserDetails;
+import org.springframework.test.context.DynamicPropertyRegistry;
+import org.springframework.test.context.DynamicPropertySource;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+import org.testcontainers.containers.PostgreSQLContainer;
 
 import java.util.Objects;
 
@@ -18,6 +23,17 @@ import static org.springframework.security.test.web.servlet.request.SecurityMock
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 class RegisterControllerTest extends AbstractControllerTest {
+    @ClassRule
+    public static PostgreSQLContainer postgreSQLContainer;
+
+    @DynamicPropertySource
+    static void postgresqlProperties(DynamicPropertyRegistry registry) {
+        postgreSQLContainer = PGContainer.getInstance();
+        postgreSQLContainer.start();
+        registry.add("spring.datasource.url", postgreSQLContainer::getJdbcUrl);
+        registry.add("spring.datasource.username", postgreSQLContainer::getUsername);
+        registry.add("spring.datasource.password", postgreSQLContainer::getPassword);
+    }
 
     @Test
     void showRegisterPage() throws Exception {

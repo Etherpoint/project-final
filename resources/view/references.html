@@ -3,7 +3,7 @@
 
 <th:block th:replace="~{layout/main::page(title='References',appMain=~{::appMain}, ownScript=~{::script})}">
 	<appMain>
-		<h1>References</h1>
+		<h1 th:text="#{sidebar.references}">References</h1>
 		<br>
 		<div class="card">
 			<div class="card-body">
@@ -11,7 +11,7 @@
 					<div class="row align-items-center justify-content-between">
 						<div class="col-auto me-auto">
 							<button type="button" id="create" class="btn btn-primary" data-bs-toggle="modal"
-							        data-bs-target="#modalRef">+ Add reference
+							        data-bs-target="#modalRef" th:text="#{reference.add}">+ Add reference
 							</button>
 						</div>
 						<div class="col-auto me-auto" id="alert">
@@ -30,9 +30,9 @@
 		<table id="table" style="text-align: left;" class="table table-striped">
 			<thead>
 			<tr>
-				<th>Title</th>
-				<th>Code</th>
-				<th>AUX</th>
+				<th th:text="#{reference.title}">Title</th>
+				<th th:text="#{reference.code}">Code</th>
+				<th th:text="#{reference.aux}">AUX</th>
 				<th></th>
 				<th></th>
 			</tr>
@@ -53,19 +53,19 @@
 						<div class="modal-body text-start">
 
 							<div class="mb-3">
-								<label for="ref-title" class="col-form-label">Title:</label>
+								<label for="ref-title" class="col-form-label" th:text="#{reference.title}">Title:</label>
 								<input type="text" class="form-control" id="ref-title">
 							</div>
 							<div class="mb-3">
-								<label for="ref-code" class="col-form-label">Code:</label>
+								<label for="ref-code" class="col-form-label" th:text="#{reference.code}">Code:</label>
 								<input type="text" class="form-control" id="ref-code"></input>
 							</div>
 							<div class="mb-3">
-								<label for="ref-aux" class="col-form-label">AUX:</label>
+								<label for="ref-aux" class="col-form-label" th:text="#{reference.aux}">AUX:</label>
 								<input type="text" class="form-control" id="ref-aux">
 							</div>
 							<div class="mb-3">
-								<label for="ref-type" class="col-form-label">Type:</label>
+								<label for="ref-type" class="col-form-label" th:text="#{profile.type}">Type:</label>
 								<select class="form-select" aria-label="ref-type" id="ref-type">
 									<option th:each="type : ${refTypes}" th:value="${type}" th:text="${type}"></option>
 								</select>
@@ -73,8 +73,8 @@
 
 						</div>
 						<div class="modal-footer">
-							<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-							<button type="submit" id="save-btn" class="btn btn-primary">Save</button>
+							<button type="button" class="btn btn-secondary" data-bs-dismiss="modal" th:text="#{message.close}">Close</button>
+							<button type="submit" id="save-btn" class="btn btn-primary" th:text="#{message.save}">Save</button>
 						</div>
 					</form>
 				</div>

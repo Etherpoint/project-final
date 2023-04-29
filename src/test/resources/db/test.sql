@@ -92,9 +92,11 @@ INSERT INTO task (id, title, description, type_code, status_code, priority_code,
 INSERT INTO task (id, title, description, type_code, status_code, priority_code, estimate, updated, project_id, sprint_id, parent_id, startpoint, endpoint) VALUES (3, 'Task-2', 'test 2 task', 'bug', 'ready', 'normal', null, null, 2, 1, null, null, null);
 INSERT INTO task (id, title, description, type_code, status_code, priority_code, estimate, updated, project_id, sprint_id, parent_id, startpoint, endpoint) VALUES (5, 'Task-4', 'test 4', 'bug', 'in progress', 'normal', null, null, 2, 1, null, null, null);
 INSERT INTO task (id, title, description, type_code, status_code, priority_code, estimate, updated, project_id, sprint_id, parent_id, startpoint, endpoint) VALUES (4, 'Task-3', 'test 3 descr', 'task', 'done', 'low', null, null, 2, 1, null, null, null);
+--todo added field description for insert query
+INSERT INTO user_belong (id, object_id, object_type, user_id, user_type_code, description, startpoint, endpoint) VALUES (3, 2, 2, 2, 'admin','creation', null, null);
+INSERT INTO user_belong (id, object_id, object_type, user_id, user_type_code, description, startpoint, endpoint) VALUES (4, 3, 2, 2, 'admin','creation', null, null);
+INSERT INTO user_belong (id, object_id, object_type, user_id, user_type_code, description, startpoint, endpoint) VALUES (5, 4, 2, 2, 'admin','creation', null, null);
+INSERT INTO user_belong (id, object_id, object_type, user_id, user_type_code, description, startpoint, endpoint) VALUES (6, 5, 2, 2, 'admin','creation', null, null);
 
-INSERT INTO user_belong (id, object_id, object_type, user_id, user_type_code, startpoint, endpoint) VALUES (3, 2, 2, 2, 'admin', null, null);
-INSERT INTO user_belong (id, object_id, object_type, user_id, user_type_code, startpoint, endpoint) VALUES (4, 3, 2, 2, 'admin', null, null);
-INSERT INTO user_belong (id, object_id, object_type, user_id, user_type_code, startpoint, endpoint) VALUES (5, 4, 2, 2, 'admin', null, null);
-INSERT INTO user_belong (id, object_id, object_type, user_id, user_type_code, startpoint, endpoint) VALUES (6, 5, 2, 2, 'admin', null, null);
-
+DELETE FROM REFERENCE WHERE CODE = 'vk';
+DELETE FROM CONTACT WHERE CODE = 'vk';

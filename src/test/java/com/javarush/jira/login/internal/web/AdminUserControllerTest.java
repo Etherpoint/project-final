@@ -1,17 +1,22 @@
 package com.javarush.jira.login.internal.web;
 
 import com.javarush.jira.AbstractControllerTest;
+import com.javarush.jira.common.config.PGContainer;
 import com.javarush.jira.login.Role;
 import com.javarush.jira.login.User;
 import com.javarush.jira.login.internal.UserRepository;
+import org.junit.ClassRule;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.security.test.context.support.WithUserDetails;
+import org.springframework.test.context.DynamicPropertyRegistry;
+import org.springframework.test.context.DynamicPropertySource;
 import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
+import org.testcontainers.containers.PostgreSQLContainer;
 
 import static com.javarush.jira.common.util.JsonUtil.writeValue;
 import static com.javarush.jira.login.internal.UniqueMailValidator.EXCEPTION_DUPLICATE_EMAIL;
@@ -26,6 +31,17 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 class AdminUserControllerTest extends AbstractControllerTest {
+    @ClassRule
+    public static PostgreSQLContainer postgreSQLContainer;
+
+    @DynamicPropertySource
+    static void postgresqlProperties(DynamicPropertyRegistry registry) {
+        postgreSQLContainer = PGContainer.getInstance();
+        postgreSQLContainer.start();
+        registry.add("spring.datasource.url", postgreSQLContainer::getJdbcUrl);
+        registry.add("spring.datasource.username", postgreSQLContainer::getUsername);
+        registry.add("spring.datasource.password", postgreSQLContainer::getPassword);
+    }
 
     private static final String REST_URL_SLASH = REST_URL + '/';
 
